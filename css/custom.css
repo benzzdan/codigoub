@@ -1,0 +1,914 @@
+@font-face {
+    font-family: futuralt;
+    src: url(../fonts/FuturaLT.ttf);
+}
+
+@font-face {
+    font-family: futuraltbold;
+    src: url(../fonts/FuturaLT-Bold.ttf);
+}
+
+@font-face {
+    font-family: montserrat;
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+
+
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Styles */
+    #logo {
+        max-width: 30% !important;
+    }
+    .proyectos {
+        width: 920px;
+    }
+    .footarea {
+        width: 920px;
+        padding: 5%;
+    }
+    .middlefooter {
+        padding: 0;
+    }
+    h2 {
+        margin-bottom: 3vh;
+    }
+    .firma1 {
+        height: 630px !important;
+    }
+}
+
+
+/* Smartphones (landscape) ----------- */
+
+@media only screen and (min-width: 321px) {
+    /* Styles */
+}
+
+
+/* Smartphones (portrait) ----------- */
+
+
+/* viewport size <= 320px ----------- */
+
+@media only screen and (max-width: 320px) {
+    /* Styles */
+    #logo {
+        max-width: 30% !important;
+    }
+    .firma1 {
+        height: 630px !important;
+    }
+}
+
+
+/* iPads (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+    .proyectos {
+        width: 920px;
+    }
+    .footarea {
+        width: 920px;
+        padding: 5%;
+    }
+}
+
+
+/* iPads (landscape) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* Styles */
+}
+
+
+/* iPads (portrait) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /* Styles */
+    #logo {
+        max-width: 30% !important;
+    }
+}
+
+
+/* Desktops and laptops ----------- */
+
+@media only screen and (min-width: 1224px) {
+    #logo {
+        max-width: 12% !important;
+    }
+    .proyectos {
+        width: 1120px;
+    }
+    .footarea {
+        width: 1030px;
+        padding-top: 10vh;
+    }
+    .middlefooter {
+        padding-top: 10vh;
+    }
+    h2 {
+        margin-bottom: 6vh;
+    }
+    .mosaico-container {
+        height: 100%;
+        max-height: 309px;
+    }
+    .bigimg-container {
+        padding-right: 10px !important;
+        height: 100%;
+        max-height: 628px;
+    }
+    .mosaico {
+        min-width: 570px;
+        min-height: 450px;
+    }
+    .mosaico-grande {
+        min-width: 570px;
+        min-height: 450px;
+    }
+    /* Styles */
+}
+
+
+/* Large screens ----------- */
+
+@media only screen and (min-width: 1824px) {
+    /* Styles */
+    #logo {
+        max-width: 12% !important;
+    }
+    .proyectos {
+        min-width: 1110px;
+    }
+    .footarea {
+        width: 1030px;
+        padding-top: 10vh;
+    }
+    .middlefooter {
+        padding-top: 10vh;
+    }
+    h2 {
+        margin-bottom: 6vh;
+    }
+    .mosaico-container {
+        height: 100%;
+        max-height: 390px;
+    }
+    .bigimg-container {
+        padding-right: 5px !important;
+        height: 100%;
+        min-height: 820px;
+    }
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.logo {
+    max-width: 100%;
+    text-align: center;
+}
+
+#logo {
+    max-width: 12% !important;
+}
+
+.carousel-item img {
+    height: 543px;
+}
+
+.carousel-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0.8;
+}
+
+
+/*
+Removes white gap between slides - chagnge to base color of slide images
+*/
+
+.carousel {
+    background: #007aeb;
+}
+
+
+/*
+  Forces image to be 100% width and not max width of 100%
+  */
+
+.carousel-item .img-fluid {
+    width: 100%;
+}
+
+.white {
+    color: white !important;
+}
+
+.red {
+    color: #d43532;
+}
+
+
+/* 
+  anchors are inline so you need ot make them block to go full width
+  */
+
+.carousel-item a {
+    display: block;
+    width: 100%;
+}
+
+.carousel-caption {
+    top: 39%;
+}
+
+
+/* Ninja Button styles */
+
+.ninja-btn {
+    display: inline-block;
+    float: left;
+    position: relative;
+    width: 44px;
+    height: 28.66666667px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 2;
+}
+
+.ninja-btn span,
+.ninja-btn span:before,
+.ninja-btn span:after {
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    background-color: #FFFFFF;
+    width: 33px;
+    height: 2px;
+}
+
+.ninja-btn span {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-top: 13.33333333px;
+}
+
+.ninja-btn span:before,
+.ninja-btn span:after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.ninja-btn span:before {
+    top: -13.33333333px;
+}
+
+.ninja-btn span:after {
+    top: 13.33333333px;
+}
+
+
+/* Ninja Button */
+
+.ninja-btn.active span {
+    background-color: transparent;
+}
+
+.ninja-btn.active span:before,
+.ninja-btn.active span:after {
+    top: 0;
+}
+
+.ninja-btn.active span:before {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+}
+
+.ninja-btn.active span:after {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 2%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #dad5d5;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 86px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    text-transform: uppercase;
+    display: block;
+    transition: 0.3s;
+    position: relative;
+}
+
+.sidenav a:hover {
+    color: #a9a9a9;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.selector-menu {
+    width: 18px;
+    height: 18px;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    top: 18px;
+    margin-left: 1vh;
+    display: none;
+}
+
+p.white-s {
+    font-size: 16px;
+    color: white;
+}
+
+.bold {
+    font-family: futuraltbold !important;
+}
+
+h1 {
+    font-family: futuralt;
+}
+
+body {
+    font-family: montserrat;
+}
+
+.push {
+    height: 5vh;
+}
+
+.img-project {
+    min-height: 187px;
+}
+
+.full-width-image {
+    min-height: 420px;
+    position: relative;
+    background: url("../img/city_footer.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+
+/* .full-width-image:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0.8;
+} */
+
+.full-width-image:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(black, black);
+    opacity: .9;
+}
+
+.gray {
+    color: #828083;
+    margin: unset;
+}
+
+footer a {
+    color: white;
+    padding-right: 1vh;
+    padding-left: 1vh;
+    font-size: 12px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #828083;
+}
+
+footer span {
+    color: white;
+}
+
+span img {
+    margin-right: 12px;
+}
+
+.lastfooter {
+    background-color: #cc362c;
+    min-height: 100px;
+}
+
+
+/* Ninja Button styles */
+
+.ninja2-btn {
+    display: inline-block;
+    float: left;
+    width: 44px;
+    height: 28.66666667px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 2;
+    left: 4vh;
+    top: 4vh;
+    position: absolute;
+}
+
+.ninja2-btn span,
+.ninja2-btn span:before,
+.ninja2-btn span:after {
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    background-color: rgb(2, 2, 2);
+    width: 33px;
+    height: 2px;
+}
+
+.ninja2-btn span {
+    position: relative;
+    display: inline-block;
+    float: left;
+    margin-top: 13.33333333px;
+}
+
+.ninja2-btn span:before,
+.ninja2-btn span:after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.ninja2-btn span:before {
+    top: -13.33333333px;
+}
+
+.ninja2-btn span:after {
+    top: 13.33333333px;
+}
+
+
+/* Ninja Button */
+
+.ninja2-btn.active span {
+    background-color: transparent;
+}
+
+.ninja2-btn.active span:before,
+.ninja2-btn.active span:after {
+    top: 0;
+}
+
+.ninja2-btn.active span:before {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+}
+
+.ninja2-btn.active span:after {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+}
+
+.upcase {
+    text-transform: uppercase !important;
+}
+
+.wrapper2 {
+    position: relative;
+}
+
+.img-holder .caption {
+    position: absolute;
+    width: 100%;
+    bottom: 35%;
+}
+
+.img-holder {
+    position: relative;
+}
+
+
+/*TEST */
+
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.spacingbtn {
+    margin-right: 5px;
+}
+
+.btn-outline-redblack {
+    color: black;
+    background-color: transparent;
+    background-image: none;
+    border-color: black;
+}
+
+.btn-outline-redblack:hover {
+    color: #fff;
+    background-color: #cc362c;
+    border-color: black;
+    cursor: pointer;
+}
+
+.btn-outline-redblack.active {
+    color: #fff;
+    background-color: #cc362c;
+    border-color: fff;
+    cursor: pointer;
+}
+
+.btn-outline-gray {
+    color: #fff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #fff;
+}
+
+.btn-outline-gray:hover {
+    color: #fff;
+    background-color: #464646;
+    border-color: fff;
+    cursor: pointer;
+}
+
+.btn-outline-gray.active {
+    color: #fff;
+    background-color: #464646;
+    border-color: fff;
+    cursor: pointer;
+}
+
+
+/* TEST */
+
+.nopad {
+    padding: unset;
+}
+
+.img-proyectos:hover {
+    cursor: pointer;
+}
+
+.mosaico .col-6 {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.item {
+    transition: transform 0.5s ease;
+    transition: filter 0.5s ease;
+}
+
+.item:hover {
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+    -webkit-filter: brightness(.5);
+    filter: brightness(.5);
+}
+
+.item:hover:after {
+    opacity: 0;
+}
+
+.img-proyectos:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(black, black);
+    opacity: .9;
+}
+
+.mosaico-grande {
+    margin-top: 5px;
+}
+
+.mosaico-grande img {
+    max-width: 570px !important;
+    max-height: 460px !important;
+    min-height: 456px !important;
+}
+
+.mosaico .caption {
+    font-size: 20px;
+}
+
+.mosaico img {
+    width: 255px !important;
+    height: 213px !important;
+    /* height: max-content !important; */
+}
+
+
+/* caption hover */
+
+.screen {
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 1000;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.screen:hover {
+    opacity: 1
+}
+
+p.caption {
+    color: #fff;
+    font-weight: bold;
+    font-family: futuraltbold;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-size: 35px;
+}
+
+p.small {
+    font-size: 15px;
+    bottom: -52%;
+    font-family: futura;
+    font-weight: lighter;
+    color: white;
+}
+
+.screen:hover p.caption {
+    margin-left: 0;
+}
+
+.screen {
+    width: 100%;
+    bottom: 5%;
+    padding-top: 10%;
+}
+
+.screen.fade-in p.caption {
+    margin-left: 0;
+}
+
+.box {
+    position: relative;
+}
+
+.leer-mas {
+    position: relative;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #707579;
+}
+
+a.white:hover {
+    color: #464646 !important;
+}
+
+.servicios {
+    padding-left: 10% !important;
+    padding-right: 5% !important;
+    padding-top: 3% !important;
+    padding-bottom: 3% !important;
+}
+
+.servicios1 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/servicios/CodigoUB_Servicios_04.png');
+}
+
+.servicios2 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/proyectos/images/Web_Codigo-UB-Proyectos_SCI_IMI.png');
+}
+
+.servicios3 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/servicios/CodigoUB_Servicios_07.png');
+}
+
+.servicios4 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/servicios/CodigoUB_Servicios_09.png');
+}
+
+.fullw-image {
+    min-width: 100%;
+    max-height: 450px;
+}
+
+.proyecto-view {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: solid #fff 10px;
+}
+
+.fullw-img {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.firma_main {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/nuestra_firma_home.png');
+    /* background-image: url('../assets/images/proyectos/images/Web_Codigo-UB-Proyectos_HONDA.png'); */
+    height: inherit;
+}
+
+.firma1 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/nuestra_firma/grua1.png');
+    height: inherit;
+    border-top: solid white 5px;
+}
+
+.firma2 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/nuestra_firma/mosaico1.png');
+    min-height: 310px;
+    border: solid white 5px;
+}
+
+.firma3 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/nuestra_firma/mosaico2.png');
+    min-height: 310px;
+    border: solid white 5px;
+    border-right: unset;
+}
+
+.firma4 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/nuestra_firma/mosaico3.png');
+    min-height: 320px;
+    border: solid white 5px;
+    border-bottom: unset;
+}
+
+.firma5 {
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-image: url('../assets/images/nuestra_firma/mosaico4.png');
+    min-height: 320px;
+    border: solid white 5px;
+    border-bottom: unset;
+    border-right: unset;
+}
