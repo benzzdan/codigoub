@@ -1,5 +1,8 @@
 <?php
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
     require 'vendor/autoload.php';
+
     
   
 
@@ -95,44 +98,100 @@
 
         public function contacto_email(){
 
-            include_once('vendor/sendgrid/credentials_sendgrid.php');
+            require 'vendor/PHPMailer/src/Exception.php';
+            require 'vendor/PHPMailer/src/PHPMailer.php';
+            require 'vendor/PHPMailer/src/SMTP.php';
 
-            $this->load->library('email');
-
-            $config['mailtype'] = 'html';
-            $config['charset']  = 'utf-8';
-            $config['wordwrap'] = TRUE;
+            $mail = new PHPMailer();
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = 'ssl';
+            $mail->Host = 'smtp.gmail.com';
+            $mail->Port = '465';
+            $mail->isHTML();
+            $mail->Username = 'benzzlab@gmail.com';
+            $mail->Password = 'bd948155';
+            $mail->SetFrom('no-reply@codigoub.com.mx');
+            $mail->Subject = 'INFO Contacto - CodigoUB';
+            $mail->AddAddress('bensondaniel664@gmail.com');
 
             $data['nombre'] = $this->input->post('nombre');
             $data['email'] = $this->input->post('email');
             $data['mensaje'] = $this->input->post('mensaje');
             $data['tel'] = $this->input->post('tel');
-
-            $this->email->initialize($config);
-
             $body = $this->load->view('templates/email_contacto',$data ,TRUE);
+            $mail->Body = $body;
 
-            $email = new \SendGrid\Mail\Mail(); 
-            $email->setFrom("no-reply@codigoub.com.mx", "CodigoUB");
-            $email->setSubject("Info - Contacto CODIGO UB");
-            $email->addTo("benzzlab@gmail.com", "Daniel Benson");
-            $email->addTo("ventas@codigoub.com.mx", "CODIGO UB Administration");
-            $email->addContent(
-                "text/html", $body
-            );
-            $sendgrid = new \SendGrid($API_KEY);
+
             try {
 
-                $response = $sendgrid->send($email);
-                // print $response->statusCode() . "\n";
-                // print_r($response->headers());
-                // print $response->body() . "\n";
+                $mail->Send();
                 $this->load->view('templates/header');
                 $this->load->view('templates/email_success');
                 $this->load->view('templates/footer');
             } catch (Exception $e) {
                 echo 'Caught exception: '. $e->getMessage() ."\n";
             }
+
+
+
+  
+
+
+
+            // include_once('vendor/sendgrid/credentials_sendgrid.php');
+
+            // $this->load->library('email');
+
+            // $config['mailtype'] = 'html';
+            // $config['charset']  = 'utf-8';
+            // $config['wordwrap'] = TRUE;
+            // $config['protocol'] = 'sendmail';
+            // $config['mailpath'] = '/usr/sbin/sendmail';
+
+            // $this->email->initialize($config);
+            // $this->email->set_newline("\r\n");
+            // $this->email->from('no-reply@codigoub.com');
+            // $this->email->to(
+            //     array('bensondaniel664@gmail.com', 'ventas@codigoub.com.mx'));
+            // $this->email->subject('this is a test');
+
+  
+
+            // $body = $this->load->view('templates/email_contacto',$data ,TRUE);
+
+            // $this->email->message($body);
+
+            // if($this->email->send()) {
+            //     $this->load->view('templates/header');
+            //     $this->load->view('templates/email_success');
+            //     $this->load->view('templates/footer');
+            // }else {
+            //     show_error($this->email->print_debugger());
+            // }
+
+
+
+            //SENDGRID
+
+            // $email = new \SendGrid\Mail\Mail(); 
+            // $email->setFrom("no-reply@codigoub.com.mx", "CodigoUB");
+            // $email->setSubject("Info - Contacto CODIGO UB");
+            // $email->addTo("benzzlab@gmail.com", "Daniel Benson");
+            // $email->addTo("ventas@codigoub.com.mx", "CODIGO UB Administration");
+            // $email->addContent(
+            //     "text/html", $body
+            // );
+            // $sendgrid = new \SendGrid($API_KEY);
+            // try {
+
+            //     $response = $sendgrid->send($email);
+            //     $this->load->view('templates/header');
+            //     $this->load->view('templates/email_success');
+            //     $this->load->view('templates/footer');
+            // } catch (Exception $e) {
+            //     echo 'Caught exception: '. $e->getMessage() ."\n";
+            // }
 
 
 
@@ -151,40 +210,6 @@
             // $config['wordwrap'] = TRUE;
 
             // $this->email->initialize($config);
-           
-
-            // $this->email->set_newline("\r\n");
-
-
-            // $this->email->from('no-reply@codigoub.com');
-            // $this->email->to(
-            //     array('bensondaniel664@gmail.com', 'ventas@codigoub.com.mx'));
-            // $this->email->subject('this is a test');
-
-            // $data['nombre'] = $this->input->post('nombre');
-            // $data['email'] = $this->input->post('email');
-            // $data['mensaje'] = $this->input->post('mensaje');
-            // $data['tel'] = $this->input->post('tel');
-
-
-
-            // $body = $this->load->view('templates/email_contacto',$data ,TRUE);
-
-
-
-            // $this->email->message($body);
-
-
-
-
-            // if($this->email->send()) {
-            //     $this->load->view('templates/header');
-            //     $this->load->view('templates/email_success');
-            //     $this->load->view('templates/footer');
-            // }else {
-            //     show_error($this->email->print_debugger());
-            // }
-
 
 
         }

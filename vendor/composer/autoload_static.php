@@ -30,6 +30,10 @@ class ComposerStaticInit5960188019c497754a9567a2252db8d4
             'SendGrid\\Contacts\\' => 18,
             'SendGrid\\' => 9,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -72,6 +76,10 @@ class ComposerStaticInit5960188019c497754a9567a2252db8d4
         array (
             0 => __DIR__ . '/..' . '/sendgrid/php-http-client/lib',
             1 => __DIR__ . '/..' . '/sendgrid/sendgrid/lib',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
