@@ -3,18 +3,18 @@
         <div class="mx-auto footarea">
           <div class="row no-gutters">
             <div class="col-3">
-              <h1 class="white" style="font-size: 24px">Nuestra firma</h1><br>
+              <h1 class="white" style="font-size: 24px"><?php echo $this->lang->line('footer_nuestra_firma')?></h1><br>
               <p class="gray" style="margin-bottom: 0">CÓDIGO UB</p>
-              <small class="gray" style="position: relative;top: -8px;">Constructora</small>
+              <small class="gray" style="position: relative;top: -8px;"><?php echo $this->lang->line('footer_codigo_ub')?></small>
               <div class="push d-none d-sm-block"></div>
               <p class="white">
-                Código UB Constructora S.A de C.V.
-                es una empresa dedicada y comprometida con la construcción, que cuenta con personal con amplia experiencia.
+                <?php echo $this->lang->line('footer_codigo_ub_text')?>
               </p>
             </div>
             <div class="col-6 text-center middlefooter">
               <div class="form-inline" style="display: inherit">
-                <a href="<?php echo base_url();?>">Home</a><span>|</span><a href="<?php echo base_url('firma');?>">Nuestra Firma</a><span>|</span><a href="<?php echo base_url('servicios');?>">Servicios</a><span>|</span><a href="<?php echo base_url('proyectos');?>">Proyectos</a><span>|</span><a href="<?php echo base_url('contacto');?>">Contacto</a>
+              <a href="<?php echo ($this->uri->segment(1) == 'en' ?  base_url('en') : base_url(''))?>"><?php echo $this->lang->line('footer_links_home')?></a>
+                <span>|</span><a href="<?php echo ($this->uri->segment(1) == 'en' ?  base_url('en/firma') : base_url('firma'))?>"><?php echo $this->lang->line('footer_links_firma')?></a><span>|</span><a href="<?php echo ($this->uri->segment(1) == 'en' ?  base_url('en/servicios') : base_url('servicios'))?>"><?php echo $this->lang->line('footer_links_servicios')?></a><span>|</span><a href="<?php echo ($this->uri->segment(1) == 'en' ?  base_url('en/proyectos') : base_url('proyectos'))?>"><?php echo $this->lang->line('footer_links_proyectos')?></a><span>|</span><a href="<?php echo ($this->uri->segment(1) == 'en' ?  base_url('en/contacto') : base_url('contacto'))?>"><?php echo $this->lang->line('footer_links_contacto')?></a>
               </div>
               <div class="push"></div>
               <div class="form-inline" style="display: inherit">
@@ -36,7 +36,7 @@
               </div>
             </div>
             <div class="col-3">
-            <h1 class="white" style="font-size: 24px;">Contacto</h1><br> 
+            <h1 class="white" style="font-size: 24px;"><?php echo $this->lang->line('footer_links_contacto')?></h1><br> 
                 <span><img style="width: 6%"src="<?php echo base_url('img/mark2.png') ?>" alt=""> Guadalajara, Jalisco</span>
                 <div class="push"></div>
                 <span><img style="width: 6%"src="<?php echo base_url('img/envelope.png') ?>" alt="">ventas@codigoub.com.mx</span>

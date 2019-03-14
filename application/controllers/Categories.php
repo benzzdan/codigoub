@@ -1,5 +1,5 @@
 <?php
-    class Categories extends CI_Controller {
+    class Categories extends MY_Controller {
         public function index(){
             $data['titulo'] = 'Categorias';
             

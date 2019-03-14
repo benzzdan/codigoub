@@ -1,29 +1,34 @@
+    <?php 
+    
+        
+        if($this->uri->segment(1) == 'es'){
+            $lang = 'es';
+        }elseif($this->uri->segment(1) == 'en') {
+            $lang = 'en';
+        }else {
+            $lang = false;
+        }
 
-
-
-      <!--
-    ####################################################
-    C A R O U S E L
-    ####################################################
-    -->
+    ?>
+    
     <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
         <div class="wrapper">
             <a  class="ninja-btn" title="menu"><span></span></a>
         </div>
         <div id="mySidenav" class="sidenav">
-            <a href="<?php echo base_url() ?>">01 HOME
+            <a href="<?php if($lang == 'es') { echo base_url('es'); } elseif($lang == 'en') { echo base_url('en'); } else { echo base_url('');} ?>">01 <?php echo $this->lang->line('menu_links_home')?>
                 <span class="selector-menu"></span>
             </a>
-            <a href="<?php echo base_url('firma'); ?>">02 Nuestra Firma
+            <a href="<?php if($lang == 'es') { echo base_url('es/firma'); } elseif($lang == 'en') { echo base_url('en/firma'); } else { echo base_url('firma');} ?>">02 <?php echo $this->lang->line('menu_links_firma')?>
                 <span class="selector-menu"></span>
             </a>
-            <a href="<?php echo base_url('servicios'); ?>">03 Servicios
+            <a href="<?php if($lang == 'es') { echo base_url('es/servicios'); } elseif($lang == 'en') { echo base_url('en/servicios'); } else { echo base_url('servicios');} ?>">03 <?php echo $this->lang->line('menu_links_servicios')?>
                 <span class="selector-menu"></span>
             </a>
-            <a href="<?php echo base_url() . 'proyectos' ?>">04 Proyectos
+            <a href="<?php if($lang == 'es') { echo base_url('es/proyectos'); } elseif($lang == 'en') { echo base_url('en/proyectos'); } else { echo base_url('proyectos');} ?>">04 <?php echo $this->lang->line('menu_links_proyectos')?>
                 <span class="selector-menu"></span>
             </a>
-            <a href="<?php echo base_url() . 'contacto' ?>">05 Contacto
+            <a href="<?php if($lang == 'es') { echo base_url('es/contacto'); } elseif($lang == 'en') { echo base_url('en/contacto'); } else { echo base_url('contacto');} ?>">05 <?php echo $this->lang->line('menu_links_contacto')?>
                 <span class="selector-menu"></span>
             </a>
          </div>
@@ -35,24 +40,27 @@
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
                 <a href="#">
-                    <!-- 
-                    If you need more browser support use https://scottjehl.github.io/picturefill/
-                    If a picture looks blurry on a retina device you can add a high resolution like this
-                    <source srcset="img/blog-post-1000x600-2.jpg, blog-post-1000x600-2@2x.jpg 2x" media="(min-width: 768px)">
-
-                    What image sizes should you use? This can help - https://codepen.io/JacobLett/pen/NjramL
-                     -->
                      <picture>
+                      <?php if($caruselImages[0]['nombre'] != '') { ?>
+                        <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[0]['nombre']; ?>" media="(min-width: 1400px)">
+                      <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[0]['nombre']; ?>" media="(min-width: 769px)">
+                       <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[0]['nombre']; ?>" media="(min-width: 577px)">
+                      <img srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[0]['nombre']; ?>" alt="responsive image" class="d-block img-fluid">
+                    
+                    <?php
+                      } else { ?>
                       <source srcset="<?php echo base_url('assets/images/PH01.jpg'); ?>" media="(min-width: 1400px)">
                       <source srcset="<?php echo base_url('assets/images/PH01.jpg');?>" media="(min-width: 769px)">
                        <source srcset="<?php echo base_url('assets/images/PH01.jpg');?>" media="(min-width: 577px)">
                       <img srcset="<?php echo base_url('assets/images/PH01.jpg');?>" alt="responsive image" class="d-block img-fluid">
+                      <?php } ?>
                     </picture>
 
                     <div class="carousel-caption">
                         <div>
-                            <h2>Comprometidos con la construcción</h2>
-                            <p>Cuidamos cada detalle durante la construcción de las obras</p>
+                        <h2><?php echo ($this->uri->segment(1) == 'en' ?  $caruselImages[0]['titulo_en'] :  $caruselImages[0]['titulo'])?></h2>
+                            <p><?php echo ($this->uri->segment(1) == 'en' ?  $caruselImages[0]['subtitulo_en'] :  $caruselImages[0]['subtitulo'])?></p>
+                            <!-- TODO: fix this links buttons learn more.... -->
                             <span class="btn btn-sm btn-outline-secondary" style="display: none">Learn More</span>
                         </div>
                     </div>
@@ -60,18 +68,30 @@
             </div>
             <!-- /.carousel-item -->
             <div class="carousel-item">
+
+
                 <a href="#">
-                     <picture>
-                     <source srcset="<?php echo base_url('assets/images/PH02.jpg'); ?>" media="(min-width: 1400px)">
-                     <source srcset="<?php echo base_url('assets/images/PH02.jpg');?>" media="(min-width: 769px)">
-                      <source srcset="<?php echo base_url('assets/images/PH02.jpg');?>" media="(min-width: 577px)">
-                     <img srcset="<?php echo base_url('assets/images/PH02.jpg');?>" alt="responsive image" class="d-block img-fluid">
+                <picture>
+                      <?php if($caruselImages[1]['nombre'] != '') { ?>
+                        <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[1]['nombre']; ?>" media="(min-width: 1400px)">
+                      <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[1]['nombre']; ?>" media="(min-width: 769px)">
+                       <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[1]['nombre']; ?>" media="(min-width: 577px)">
+                      <img srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[1]['nombre']; ?>" alt="responsive image" class="d-block img-fluid">
+                    
+                    <?php
+                      } else { ?>
+                      <source srcset="<?php echo base_url('assets/images/PH02.jpg'); ?>" media="(min-width: 1400px)">
+                      <source srcset="<?php echo base_url('assets/images/PH02.jpg');?>" media="(min-width: 769px)">
+                       <source srcset="<?php echo base_url('assets/images/PH02.jpg');?>" media="(min-width: 577px)">
+                      <img srcset="<?php echo base_url('assets/images/PH02.jpg');?>" alt="responsive image" class="d-block img-fluid">
+                      <?php } ?>
                     </picture>
 
                     <div class="carousel-caption justify-content-center align-items-center">
                         <div>
-                            <h2>Le damos valor a sus proyectos</h2>
-                            <p>We work as an extension of your business to explore solutions</p>
+                        <h2><?php echo ($this->uri->segment(1) == 'en' ?  $caruselImages[1]['titulo_en'] :  $caruselImages[1]['titulo'])?></h2>
+                            <p><?php echo ($this->uri->segment(1) == 'en' ?  $caruselImages[1]['subtitulo_en'] :  $caruselImages[1]['subtitulo'])?></p>
+                                <!-- TODO: fix this links buttons learn more.... -->
                             <span class="btn btn-sm btn-outline-secondary" style="display: none">Our Process</span>
                         </div>
                     </div>
@@ -80,64 +100,60 @@
             <!-- /.carousel-item -->
             <div class="carousel-item">
                 <a href="#">
-                    <picture>
-                        <source srcset="<?php echo base_url('assets/images/PH03.jpg'); ?>" media="(min-width: 1400px)">
-                        <source srcset="<?php echo base_url('assets/images/PH03.jpg');?>" media="(min-width: 769px)">
-                        <source srcset="<?php echo base_url('assets/images/PH03.jpg');?>" media="(min-width: 577px)">
-                        <img srcset="<?php echo base_url('assets/images/PH03.jpg');?>" alt="responsive image" class="d-block img-fluid">
+                <picture>
+                      <?php if($caruselImages[2]['nombre'] != '') { ?>
+                        <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[2]['nombre']; ?>" media="(min-width: 1422px)">
+                      <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[2]['nombre']; ?>" media="(min-width: 769px)">
+                       <source srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[2]['nombre']; ?>" media="(min-width: 577px)">
+                      <img srcset="<?php echo base_url('uploads/carusel/') . $caruselImages[2]['nombre']; ?>" alt="responsive image" class="d-block img-fluid">
+                    
+                    <?php
+                      } else { ?>
+                      <source srcset="<?php echo base_url('assets/images/PH03.jpg'); ?>" media="(min-width: 1400px)">
+                      <source srcset="<?php echo base_url('assets/images/PH03.jpg');?>" media="(min-width: 769px)">
+                       <source srcset="<?php echo base_url('assets/images/PH03.jpg');?>" media="(min-width: 577px)">
+                      <img srcset="<?php echo base_url('assets/images/PH03.jpg');?>" alt="responsive image" class="d-block img-fluid">
+                      <?php } ?>
                     </picture>
-
                     <div class="carousel-caption justify-content-center align-items-center">
                         <div>
-                            <h2>La seguridad y calidad siempre serán lo primero</h2>
-                            <p>We monitor and optimize your site's long-term performance</p>
+                            <h2><?php echo ($this->uri->segment(1) == 'en' ?  $caruselImages[2]['titulo_en'] :  $caruselImages[2]['titulo'])?></h2>
+                            <p><?php echo ($this->uri->segment(1) == 'en' ?  $caruselImages[2]['subtitulo_en'] :  $caruselImages[2]['subtitulo'])?></p>
+                                <!-- TODO: fix this links buttons learn more.... -->
                             <span class="btn btn-sm btn-secondary" style="display: none">Learn How</span>
                         </div>
                     </div>
                 </a>
             </div>
-            <!-- /.carousel-item -->
         </div>
-        <!-- /.carousel-inner -->
-        <!-- <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a> -->
     </div>
 
-    <!-- /.carousel -->
-<!-- /.container -->
 
 
 <!-- NUESTRA FIRMA -->
 
   <div class="row no-gutters">
-    <div class="col-md-7" style="padding: 5% 5% 0% 14%">
-        <h2 class="bold" style="color: red;">NUESTRA FIRMA</h2>
-        <p>Código UB Constructora nace en el ramo de la industria electrónica y automotriz, construimos siempre anteponiendo los principios elementales de seguridad del personal y asegurando la operación continua de nuestro cliente, creemos que nuestra fortaleza está en el capital humano con el que contamos, más 2 millones de metros cuadrados construidos pueden confirmarlo.</p>
-        <a class="btn btn-outline-dark" style="margin-right: 3vh" href="<?php echo base_url('firma'); ?>">CONOCE MÁS</a>
+    <div class="col-md-6" style="padding: 5% 5% 0% 14%">
+        <h2 class="bold" style="color: red;"><?php echo $this->lang->line('menu_links_firma')?></h2>
+        <p><?php echo $this->lang->line('nuestra_firma')?></p>
+        <a class="btn btn-outline-dark" style="margin-right: 3vh" href="<?php echo base_url('firma'); ?>"><?php echo $this->lang->line('nuestra_firma_boton')?></a>
         <div class="push"></div>
     </div>
-    <div class="col-md-5 firma_main">
-        <!-- <img class="img-fluid" src="<?php echo base_url('assets/images/nuestra_firma_home.png')?>" alt="" style="min-height: 462px;"> -->
+    <div class="col-md-6 firma_main">
+        <img class="img-fluid" src="<?php echo base_url('uploads/firma/' . $firmaPhoto[0]['nombre'])?>" alt="" style="min-height: 462px;">
     </div>
   </div>
   <div class="w-100" style="background-color: #a8a9ab; min-height: 500px;">
         <div class="container-fluid text-center" style="padding-top: 5vh">
-            <h1 class="white bold" style="margin-bottom: 3vh">PROYECTOS</h1>
+            <h1 class="white bold" style="margin-bottom: 3vh"><?php echo $this->lang->line('proyecto_titulo')?></h1>
             <div class="mx-auto" style="width: 920px">
                 <p class="white-s">
-                    Cada proyecto con el que nos comprometemos lo desarrollamos con pasión, entrega y una gran responsabilidad, vivimos de ellos y queremos sentirnos orgullosos
-                    cada vez que pasemos frente a ellos. Razón por la cual no podemos fallar.
+                    <?php echo $this->lang->line('proyecto_parrafo')?>
                 </p>
                 <div class="push"></div>
 
                 <div class="d-block text-center">
-                    <button id="post-todos" type="submit" class="active btn btn-outline-gray spacingbtn">TODOS</button>
+                    <button id="post-todos" type="submit" class="active btn btn-outline-gray spacingbtn"><?php echo $this->lang->line('proyecto_todo')?></button>
                     <?php foreach($categorias as $categoria):?>
                             <button  id="<?php echo $categoria['id'];?>" type="button" class="btn btn-outline-gray catbuttons spacingbtn"><?php echo $categoria['nombre']; ?></button>
                     <?php endforeach;?>
@@ -236,7 +252,7 @@
         </div>
         <div class="container">
             <div class="row text-center" style="display: inherit">
-                <a class="white" href="<?php echo base_url('proyectos')?>">Ver más</a>
+                <a class="white" href="<?php if($lang == 'es') { echo base_url('es/proyectos'); } elseif($lang == 'en') { echo base_url('en/proyectos'); } else { echo base_url('proyectos');} ?>""><?php echo $this->lang->line('proyecto_vermas')?></a>
             </div>
         </div>
         <div class="push"></div>

@@ -64,6 +64,7 @@ class Post_model extends CI_Model {
             'titulo' => iconv('UTF-8','ASCII//TRANSLIT',$title),
             'slug' => $slug,
             'descripcion' => $this->input->post('descripcion'),
+            'descrip_en' => $this->input->post('descrip_en'),
             'categoria_id' => $this->input->post('categoria_id')
         );
 
@@ -105,11 +106,14 @@ class Post_model extends CI_Model {
         //gets the data from the submitted form
         $slug = url_title($this->input->post('titulo')); 
         $title = $this->input->post('titulo');
+        $title_en = $this->input->post('titulo_en');
 
         $data = array(
             'titulo' => $title,
+            'titulo_en' => $title_en,
             'slug' => $this->normalizeString($slug),
             'descripcion' => $this->input->post('descripcion'),
+            'descrip_en' => $this->input->post('descrip_en'),
             'categoria_id' => $this->input->post('categoria_id')
         ); 
 

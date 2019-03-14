@@ -23,7 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://codigoub.com.mx'; 
+$config['base_url'] = 'http://localhost/codigoub'; 
+// $config['base_url'] = 'http://b2ec4704.ngrok.io/codigoub'; 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +78,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']	= 'es';
 
 /*
 |--------------------------------------------------------------------------

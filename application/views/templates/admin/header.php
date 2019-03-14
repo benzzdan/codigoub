@@ -115,6 +115,12 @@ Agregar Categoria</a></li>
             </li>
           </ul>
         </li> -->
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Secciones">
+          <a class="nav-link" href="<?php echo base_url('admin/secciones'); ?>" >
+            <i class="fa fa-fw fa-cubes"></i>
+            <span class="nav-link-text">Secciones</span>
+          </a>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Sitio web">
           <a class="nav-link" href="<?php echo base_url(); ?>" target="_blank">
             <i class="fa fa-fw fa-link"></i>

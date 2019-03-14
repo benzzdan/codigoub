@@ -1,17 +1,54 @@
 <?php
-    class Pages extends CI_Controller {
+    require 'vendor/autoload.php';
+    
+  
+
+    class Pages extends MY_Controller {
+
+        public function index(){
+
+
+            $data['title'] = ucfirst('Inicio');
+            $data['categorias'] = $this->post_model->get_cats();
+            // //todos los proyectos
+            $data['posts'] = $this->post_model->get_posts_by_limit();
+
+            $data['caruselImages'] = $this->image_model->getCaruselImages();
+            $data['firmaPhoto'] = $this->image_model->getFirmaImage();
+
+
+            $this->load->view('templates/header');
+            // $this->load->view('templates/test');
+            $this->load->view('pages/home', $data);
+            $this->load->view('templates/footer');
+
+        }
         public function view($page='home'){
-            if(!file_exists(APPPATH . 'views/pages/' . $page. '.php')){
-                show_404();
+
+            // if(!file_exists(APPPATH . 'views/pages/' . $page. '.php')){
+            //     show_404();
+            // }
+            
+       
+
+            if($this->uri->segment(2) == '') {
+                $page = 'home';
+            }else {
+                $page = $this->uri->segment(2);
             }
 
             $data['title'] = ucfirst($page);
             $data['categorias'] = $this->post_model->get_cats();
-            //todos los proyectos
+            // //todos los proyectos
             $data['posts'] = $this->post_model->get_posts_by_limit();
+
+            $data['caruselImages'] = $this->image_model->getCaruselImages();
+            $data['firmaPhoto'] = $this->image_model->getFirmaImage();
+
 
 
             $this->load->view('templates/header');
+            // $this->load->view('templates/test');
             $this->load->view('pages/' . $page, $data);
             $this->load->view('templates/footer');
 
@@ -58,56 +95,95 @@
 
         public function contacto_email(){
 
+            include_once('vendor/sendgrid/credentials_sendgrid.php');
+
             $this->load->library('email');
 
-            $config = array(
-                'protocol' => 'smtp',
-                'smtp_host' => 'smtp.sendgrid.net',
-                'smtp_port' => 2525,
-                'smtp_user' => 'apikey',
-                'smtp_pass' => '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'
-            );
-
-            $config['mailtype'] = 'html';
-            $config['mailpath'] = "/usr/lib/sm.bin/sendmail"; 
             $config['mailtype'] = 'html';
             $config['charset']  = 'utf-8';
             $config['wordwrap'] = TRUE;
-
-            $this->email->initialize($config);
-           
-
-            $this->email->set_newline("\r\n");
-
-
-            $this->email->from('no-reply@codigoub.com');
-            $this->email->to(
-                array('bensondaniel664@gmail.com', 'ventas@codigoub.com.mx'));
-            $this->email->subject('this is a test');
 
             $data['nombre'] = $this->input->post('nombre');
             $data['email'] = $this->input->post('email');
             $data['mensaje'] = $this->input->post('mensaje');
             $data['tel'] = $this->input->post('tel');
 
-
+            $this->email->initialize($config);
 
             $body = $this->load->view('templates/email_contacto',$data ,TRUE);
 
+            $email = new \SendGrid\Mail\Mail(); 
+            $email->setFrom("no-reply@codigoub.com.mx", "CodigoUB");
+            $email->setSubject("Info - Contacto CODIGO UB");
+            $email->addTo("benzzlab@gmail.com", "Daniel Benson");
+            $email->addTo("ventas@codigoub.com.mx", "CODIGO UB Administration");
+            $email->addContent(
+                "text/html", $body
+            );
+            $sendgrid = new \SendGrid($API_KEY);
+            try {
 
-
-            $this->email->message($body);
-
-
-
-
-            if($this->email->send()) {
+                $response = $sendgrid->send($email);
+                // print $response->statusCode() . "\n";
+                // print_r($response->headers());
+                // print $response->body() . "\n";
                 $this->load->view('templates/header');
                 $this->load->view('templates/email_success');
                 $this->load->view('templates/footer');
-            }else {
-                show_error($this->email->print_debugger());
+            } catch (Exception $e) {
+                echo 'Caught exception: '. $e->getMessage() ."\n";
             }
+
+
+
+            // $config = array(
+            //     'protocol' => 'smtp',
+            //     'smtp_host' => 'smtp.sendgrid.net',
+            //     'smtp_user' => 'benzzdan2',
+            //     'smtp_port' => 587,
+            //     'smtp_pass' => 'Bd948155_59'
+            // );
+
+            // $config['mailtype'] = 'html';
+            // $config['mailpath'] = "/usr/lib/sm.bin/sendmail"; 
+            // $config['mailtype'] = 'html';
+            // $config['charset']  = 'utf-8';
+            // $config['wordwrap'] = TRUE;
+
+            // $this->email->initialize($config);
+           
+
+            // $this->email->set_newline("\r\n");
+
+
+            // $this->email->from('no-reply@codigoub.com');
+            // $this->email->to(
+            //     array('bensondaniel664@gmail.com', 'ventas@codigoub.com.mx'));
+            // $this->email->subject('this is a test');
+
+            // $data['nombre'] = $this->input->post('nombre');
+            // $data['email'] = $this->input->post('email');
+            // $data['mensaje'] = $this->input->post('mensaje');
+            // $data['tel'] = $this->input->post('tel');
+
+
+
+            // $body = $this->load->view('templates/email_contacto',$data ,TRUE);
+
+
+
+            // $this->email->message($body);
+
+
+
+
+            // if($this->email->send()) {
+            //     $this->load->view('templates/header');
+            //     $this->load->view('templates/email_success');
+            //     $this->load->view('templates/footer');
+            // }else {
+            //     show_error($this->email->print_debugger());
+            // }
 
 
 

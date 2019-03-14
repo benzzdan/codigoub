@@ -1,4 +1,4 @@
-<h1 class="bold red text-center" style="margin-top: 5vh">CONTACTO</h1>
+<h1 class="bold red text-center" style="margin-top: 5vh"><?php echo $this->lang->line('menu_links_contacto')?></h1>
 
 <div class="push">
 
@@ -13,22 +13,22 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="nombre">Nombre *</label>
-                        <input id="nombre" type="text" name="nombre" class="form-control" placeholder="Porfavor ingrese un nombre *" required="required" data-error="name is required.">
+                        <label for="nombre"><?php echo $this->lang->line('contacto_name')?> *</label>
+                        <input id="nombre" type="text" name="nombre" class="form-control"  required="required" data-error="name is required.">
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="form_email">Email *</label>
-                        <input id="form_email" type="email" name="email" class="form-control" placeholder="Por favor ingrese su correo *" required="required" data-error="Valid email is required.">
+                        <input id="form_email" type="email" name="email" class="form-control"  required="required" data-error="Valid email is required.">
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="tel">Teléfono</label>
-                        <input id="tel" type="tel" name="tel" class="form-control" placeholder="Por favor ingrese su número telefónico">
+                        <label for="tel"><?php echo $this->lang->line('contacto_tel')?></label>
+                        <input id="tel" type="tel" name="tel" class="form-control" >
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="mensaje">Mensaje *</label>
+                    <label for="mensaje"><?php echo $this->lang->line('contacto_msj')?> *</label>
                     <textarea id="mensaje" name="mensaje" class="form-control" placeholder="Mensaje *" rows="4" required="required" data-error="send a message."></textarea>
                     <div class="help-block with-errors"></div>
                 </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <p class="text-muted"><strong>*</strong> Estos campos son requeridos.</p>
+                <p class="text-muted"><strong>*</strong> <?php echo $this->lang->line('contacto_req')?></p>
             </div>
         </div>
         <?php echo form_close(); ?>

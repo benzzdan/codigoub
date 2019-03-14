@@ -13,6 +13,14 @@
     src: url(../fonts/Montserrat-Regular.ttf);
 }
 
+.navbar-brand.abs {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    top: 0em;
+}
+
 
 /* Smartphones (portrait and landscape) ----------- */
 
@@ -49,16 +57,26 @@
 
 /* Smartphones (portrait) ----------- */
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 380px) and (orientation: portrait) {
+    .flags {
+        width: 3em;
+        margin-left: 20px;
+    }
+}
+
 
 /* viewport size <= 320px ----------- */
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 375px) {
     /* Styles */
     #logo {
         max-width: 30% !important;
     }
     .firma1 {
         height: 630px !important;
+    }
+    .flags {
+        width: 3em;
     }
 }
 
@@ -175,7 +193,7 @@
 }
 
 #logo {
-    max-width: 12% !important;
+    max-width: 17% !important;
 }
 
 .carousel-item img {
@@ -245,7 +263,7 @@ Removes white gap between slides - chagnge to base color of slide images
     height: 28.66666667px;
     cursor: pointer;
     padding: 0;
-    z-index: 2;
+    z-index: 3;
 }
 
 .ninja-btn span,
@@ -326,7 +344,7 @@ Removes white gap between slides - chagnge to base color of slide images
     height: 100%;
     width: 0;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     background-color: #dad5d5;
@@ -477,7 +495,7 @@ span img {
     height: 28.66666667px;
     cursor: pointer;
     padding: 0;
-    z-index: 2;
+    z-index: 3;
     left: 4vh;
     top: 4vh;
     position: absolute;

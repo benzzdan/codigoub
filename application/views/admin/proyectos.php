@@ -24,7 +24,7 @@
     <?php foreach($proyectos as $proyecto) : ?>
       <div class="row">
         <div class="col-2">
-        <?php $images = $this->image_model->getImages($proyecto['id']);?>
+        <?php $images = $this->image_model->getImagePortada($proyecto['id']);?>
             <?php if($images) : ?>
               <img class="img-thumbnail" src="<?php echo base_url('uploads/' . $images[0]['nombre']); ?>">
             <?php else : ?>

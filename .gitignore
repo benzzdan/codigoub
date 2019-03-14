@@ -1,1 +1,3 @@
 uploads/
+application/config/
+vendor/sendgrid/credentials_sendgrid.php

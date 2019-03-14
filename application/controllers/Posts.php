@@ -1,5 +1,5 @@
 <?php
-    class Posts extends CI_Controller {
+    class Posts extends MY_Controller {
 
 
         public function index(){
@@ -58,8 +58,12 @@
 
             $data['title'] = $data['post']['titulo'];
 
-            //get the images and load them 
+            //get the images and load them
 
+            //imagen para portada
+            $data['imagePortada'] = $this->image_model->getImagePortada($data['post']['id']);
+
+            //resto de las imagenes que seran para el mosaico de imagenes o galeria
             $data['images'] = $this->image_model->getImages($data['post']['id']);
 
             $this->load->view('templates/header');

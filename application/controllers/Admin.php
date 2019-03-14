@@ -1,5 +1,5 @@
 <?php
-class Admin extends CI_Controller {
+class Admin extends MY_Controller {
 
     private $upload_path = './uploads';
 
@@ -97,8 +97,30 @@ class Admin extends CI_Controller {
         
         }
 
+    public function secciones(){
 
-            public function view($slug = NULL) {
+        //Si no eres administrador
+                if(!$this->session->userdata('logged_in')){
+                    redirect('admin/login');
+                }
+
+                //Si no se obtienen los proyectos
+                
+                $data['titulo'] = 'Secciones';  
+                $data['imagesCarusel'] = $this->image_model->getCaruselImages();
+                $data['imageFirma'] = $this->image_model->getFirmaImage();
+ 
+                // $data['categorias'] = $this->category_model->get_cats();
+                
+
+                $this->load->view('templates/admin/header', $data);
+                $this->load->view('admin/secciones', $data);
+                $this->load->view('templates/admin/footer');
+        
+        }
+
+
+public function view($slug = NULL) {
 
 
         if(!$this->session->userdata('logged_in')){
@@ -131,6 +153,104 @@ class Admin extends CI_Controller {
                 redirect('admin/proyectos');
         }
 
+
+        public function saveCaruselInfo($img_id) {
+               $this->carusel_model->update_carusel_info($img_id);
+               redirect('admin/secciones');
+        }
+
+        public function uploadCaruselPhotos($id) {
+            if(! empty($_FILES) ){
+                $number_files = sizeof($_FILES['file']['tmp_name']);
+                $files = $_FILES['file'];
+
+                for($i = 0; $i < $number_files; $i++){
+                    if($_FILES['file']['error'][$i] != 0 ){
+                        $this->form_validation->set_message('file_upload', 'No se pudo subir el archivo.');
+                        return false;
+                    }
+                }
+
+
+                $config['upload_path'] = './uploads/carusel';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';                
+                $config['max_size'] = '4064';                
+                $config['max_width'] = '4000';                
+                $config['max_height'] = '4000';  
+                
+                $this->upload->initialize($config);
+
+                if(!$this->upload->do_upload('file')) {
+                    echo 'failed to upload!!!!!';
+                    return false;
+                }else{
+                   
+                    $data = $this->upload->data();
+
+                    $insert['nombre'] = $data['file_name'];
+                    $insert['size'] = $data['file_size'];
+              
+                    print_r($insert);
+
+
+                    //update the image instead of creating new record 
+                    
+                    //$this->db->insert('img_carusel', $insert);
+
+                    $this->carusel_model->updateCaruselImagePath($id, $data);
+                    
+                }
+
+                
+
+            }
+        }
+
+        public function uploadFirmaPhoto() {
+            if(! empty($_FILES) ){
+                $number_files = sizeof($_FILES['file']['tmp_name']);
+                $files = $_FILES['file'];
+
+                for($i = 0; $i < $number_files; $i++){
+                    if($_FILES['file']['error'][$i] != 0 ){
+                        $this->form_validation->set_message('file_upload', 'No se pudo subir el archivo.');
+                        return false;
+                    }
+                }
+
+
+                $config['upload_path'] = './uploads/firma';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';                
+                $config['max_size'] = '4064';                
+                $config['max_width'] = '4000';                
+                $config['max_height'] = '4000';  
+                
+                $this->upload->initialize($config);
+
+                if(!$this->upload->do_upload('file')) {
+                    echo 'failed to upload!!!!!';
+                    return false;
+                }else{
+                   
+                    $data = $this->upload->data();
+
+                    $insert['nombre'] = $data['file_name'];
+                    $insert['size'] = $data['file_size'];
+                    $id = $this->input->post('nuestra_firma_id');
+              
+                    print_r($insert);
+
+
+                    //update the image instead of creating new record 
+                    
+                    //$this->db->insert('img_carusel', $insert);
+
+                    $this->image_model->updateFirmaPhotoPath($data, $id);
+                }
+
+        }
+    }
+
         public function upload(){
 
           
@@ -160,17 +280,28 @@ class Admin extends CI_Controller {
                         
                         //subir imagenes y si hay error echo
                         if(!$this->upload->do_upload('file')) {
-                            echo 'failed to upload!';
+                            echo 'failed to upload!!!!!';
                             return false;
                         }else{
                                    //insert to images db
                                           
-                            $data = $this->upload->data();   
+                            $data = $this->upload->data();
+                            $portada = $this->input->post('proyecto_portada');
+
+                            
+                            
+
                             
                             $insert['nombre'] = $data['file_name'];
                             $insert['size'] = $data['file_size'];
                             $insert['id_proyecto'] = $this->input->post('proyecto_id');
+                            if($portada == '1') {
+                                $insert['portada'] = '1';
+                            }else {
+                                $insert['portada'] = '0';
+                            }
 
+                            print_r($portada);
                             print_r($insert);
 
 
@@ -208,9 +339,71 @@ class Admin extends CI_Controller {
            $this->image_model->del_img($file);
         }
 
+        public function removeCaruselImage() {
+            $file = $this->input->post('file');
+
+            if(empty($file)){
+                echo 'its empty!';
+            }
+
+            if($file && file_exists($this->upload_path . '/carusel/' . $file)){
+                unlink($this->upload_path . '/carusel/' . $file);
+            }
+
+            $this->image_model->del_img_carusel($file);
+
+        }
+
+
+        public function removeNuestraFirmaPhoto() {
+
+            $file = $this->input->post('file');
+
+            if(empty($file)){
+                echo 'its empty!';
+            }
+
+            if($file && file_exists($this->upload_path . '/firma/' . $file)){
+                unlink($this->upload_path . '/firma/' . $file);
+            }
+
+            $this->image_model->del_img_firma($file);
+
+        }
+
 
         public function getimagelist($id){
             $images = $this->image_model->getImages($id);
+
+            header("Content-type: text/json");
+            header("Content-type: application/json");
+            echo json_encode($images);
+        }
+        public function getCaruselImages(){
+            $images = $this->image_model->getCaruselImages();
+
+            header("Content-type: text/json");
+            header("Content-type: application/json");
+            echo json_encode($images);
+        }
+
+        public function getCaruselImage($id) {
+            $image = $this->image_model->getCaruselImage($id);
+            header("Content-type: text/json");
+            header("Content-type: application/json");
+            echo json_encode($image);
+        }
+
+        public function getFirmaImage() {
+            $image = $this->image_model->getFirmaImage();
+            header("Content-type: text/json");
+            header("Content-type: application/json");
+            echo json_encode($image);
+        }
+
+
+        public function getimagePortada($id){
+            $images = $this->image_model->getImagePortada($id);
 
             header("Content-type: text/json");
             header("Content-type: application/json");
